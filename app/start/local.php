@@ -20,3 +20,17 @@
 */
 
 Log::getMonolog()->pushHandler(new \Monolog\Handler\FirePHPHandler());
+
+/*
+|--------------------------------------------------------------------------
+| FirePHP registration
+|--------------------------------------------------------------------------
+|
+| Register FirePHP as additional handler.
+|
+*/
+
+App::fatal(function($exception)
+{
+    Log::error($exception);
+});
