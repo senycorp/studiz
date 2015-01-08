@@ -11,7 +11,8 @@
 |
 */
 
-Route::get('/', function()
-{
-	return View::make('hello');
-});
+/**
+ * Do not use this file to register global routes. Instead of
+ * doing this you should create a separate module in the workbench
+ * directory and create a routes.php there.
+ */
