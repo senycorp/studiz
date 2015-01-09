@@ -1,0 +1,20 @@
+{
+  "name": "studiz",
+  "version": "0.0.0",
+  "homepage": "https://github.com/senycorp/studiz",
+  "authors": [
+    "Selcuk Kekec <senycorp@googlemail.com>"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.1.3"
+  }
+}
