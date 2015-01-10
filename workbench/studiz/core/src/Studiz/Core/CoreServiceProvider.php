@@ -1,6 +1,6 @@
 <?php namespace Studiz\Core;
 
-use Illuminate\Support\ServiceProvider;
+use Studiz\Core\Provider\GenericServiceProvider;
 
 /**
  * Class CoreServiceProvider
@@ -8,24 +8,14 @@ use Illuminate\Support\ServiceProvider;
  * @author  Selcuk Kekec <senycorp@googlemail.com>
  * @package Studiz\Core
  */
-class CoreServiceProvider extends ServiceProvider {
+class CoreServiceProvider extends GenericServiceProvider {
 
 	/**
 	 * Indicates if loading of the provider is deferred.
 	 *
 	 * @var bool
 	 */
-	protected $defer = true;
-
-	/**
-	 * Bootstrap the application events.
-	 *
-	 * @return void
-	 */
-	public function boot()
-	{
-		$this->package('studiz/core');
-	}
+	protected $defer = false;
 
 	/**
 	 * Register the service provider.
@@ -47,4 +37,23 @@ class CoreServiceProvider extends ServiceProvider {
 		return array();
 	}
 
+	/**
+	 * Get package name
+	 *
+	 * @return string
+	 */
+	protected function getPackageName()
+	{
+		return 'studiz/core';
+	}
+
+	/**
+	 * Get root directory of package
+	 *
+	 * @return string
+	 */
+	protected function getPackageDirectory()
+	{
+		return __DIR__ . '/../../../';
+	}
 }
