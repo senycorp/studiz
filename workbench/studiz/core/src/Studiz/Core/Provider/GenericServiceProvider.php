@@ -101,6 +101,24 @@ abstract class GenericServiceProvider extends ServiceProvider {
 			// Initialize
 			$this->initializeProvider();
 		}
+
+		// Viewable
+		if ($this instanceof \Studiz\Core\Provider\Viewable)
+		{
+			// Get view component
+			$viewComponent = $this->getView();
+
+			if ($viewComponent instanceof \Studiz\Core\Provider\Component\View)
+			{
+				/**
+				 * @todo This is only a preparation. Please finish this job #2
+				 */
+			}
+			else
+			{
+				throw new InvalidaClassException('You have to provide an instance of View here.');
+			}
+		}
 	}
 
 	/**

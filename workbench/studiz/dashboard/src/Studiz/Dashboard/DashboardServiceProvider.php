@@ -2,6 +2,7 @@
 
 use Studiz\Core\Provider\GenericServiceProvider;
 use Studiz\Core\Provider\Routable;
+use Studiz\Core\Provider\Viewable;
 
 /**
  * Class DashboardServiceProvider
@@ -9,7 +10,7 @@ use Studiz\Core\Provider\Routable;
  * @author  Selcuk Kekec <senycorp@googlemail.com>
  * @package Studiz\Dashboard
  */
-class DashboardServiceProvider extends GenericServiceProvider implements Routable {
+class DashboardServiceProvider extends GenericServiceProvider implements Routable, Viewable {
 
 	/**
 	 * Indicates if loading of the provider is deferred.
@@ -66,5 +67,15 @@ class DashboardServiceProvider extends GenericServiceProvider implements Routabl
 	public function getRouter()
 	{
 		return $this->getPackageDirectory() . 'src/routes.php';
+	}
+
+	/**
+	 * Get view component
+	 *
+	 * @return \Studiz\Core\Provider\Component\View
+	 */
+	public function getView()
+	{
+		return new DashboardView();
 	}
 }
