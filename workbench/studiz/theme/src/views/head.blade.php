@@ -54,6 +54,9 @@ Use this file to register your js,css and other dependencies
 <!-- iCheck -->
 <script src="{{asset("packages/studiz/theme/admin-lte/js/plugins/iCheck/icheck.min.js")}}" type="text/javascript"></script>
 
+<!-- AdminLTE for demo purposes -->
+<script src="{{asset("packages/studiz/theme/admin-lte/js/AdminLTE/navigation.js")}}" type="text/javascript"></script>
+
 <!-- AdminLTE App -->
 <script src="{{asset("packages/studiz/theme/admin-lte/js/AdminLTE/app.js")}}" type="text/javascript"></script>
 

@@ -11,7 +11,12 @@
 |
 */
 
-Route::get('/', function()
+Route::get('/', function ()
 {
     return View::make('theme::main');
+});
+
+Route::get('navigationNodes', function ()
+{
+    return \Illuminate\Http\JsonResponse::create(\Studiz\Core\View\Navigation\Navigation::getInstance()->getNodes());
 });

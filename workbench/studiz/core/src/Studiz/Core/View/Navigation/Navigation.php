@@ -29,4 +29,15 @@ class Navigation extends NavigationNode
         return self::$instance;
     }
 
+    /**
+     * Add a node but prevent setting the parent to Navigation
+     *
+     * @param NavigationNode $childNode
+     *
+     * @return \Studiz\Core\View\Navigation\NavigationNode
+     */
+    public function addChild(NavigationNode $childNode)
+    {
+        return $this;
+    }
 }

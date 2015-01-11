@@ -92,10 +92,7 @@ $(function() {
         box.slideUp();
     });
 
-    /* Sidebar tree view */
-    $(".sidebar .treeview").tree();
-
-    /* 
+    /*
      * Make sure that the sidebar is streched full height
      * ---------------------------------------------
      * We are gonna assign a min-height value every time the
@@ -507,9 +504,6 @@ $(window).load(function() {
         return this.each(function() {
             //if a source is specified
             if (settings.source === "") {
-                if (console) {
-                    console.log("Please specify a source first - boxRefresh()");
-                }
                 return;
             }
             //the box

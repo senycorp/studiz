@@ -26,28 +26,35 @@ class NavigationNode extends Node
      *
      * @var string
      */
-    protected $title = '';
+    public $title = '';
 
     /**
      * URL of node
      *
      * @var string
      */
-    protected $url = '';
+    public $url = '';
+
+    /**
+     * Icon of node
+     *
+     * @var string
+     */
+    public $icon = '';
 
     /**
      * Identifier of node
      *
      * @var string
      */
-    protected $identifier = '';
+    public $identifier = '';
 
     /**
      * Parent node
      *
      * @var \Studiz\Core\View\Navigation\NavigationNode
      */
-    protected $parentNode = null;
+    public $parentNode = null;
 
     /**
      * Create a node
