@@ -1,6 +1,7 @@
 <?php namespace Studiz\Core;
 
 use Studiz\Core\Provider\GenericServiceProvider;
+use Studiz\Core\Provider\Routable;
 
 /**
  * Class CoreServiceProvider
@@ -8,7 +9,7 @@ use Studiz\Core\Provider\GenericServiceProvider;
  * @author  Selcuk Kekec <senycorp@googlemail.com>
  * @package Studiz\Core
  */
-class CoreServiceProvider extends GenericServiceProvider
+class CoreServiceProvider extends GenericServiceProvider implements Routable
 {
 
     /**
@@ -56,5 +57,15 @@ class CoreServiceProvider extends GenericServiceProvider
     protected function getPackageDirectory()
     {
         return __DIR__ . '/../../../';
+    }
+
+    /**
+     * Get path to router file
+     *
+     * @return string
+     */
+    public function getRouter()
+    {
+        return $this->getPackageDirectory() . 'src/routes.php';
     }
 }
