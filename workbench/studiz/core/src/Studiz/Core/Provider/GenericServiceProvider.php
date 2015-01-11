@@ -4,6 +4,10 @@ use Illuminate\Filesystem\FileNotFoundException;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Support\ServiceProvider;
+use Studiz\Core\Exception\InvalidClassException;
+use Studiz\Core\Provider\Component\View\Navigationable;
+use Studiz\Core\View\Navigation\Navigation;
+use Studiz\Core\View\Navigation\TopNavigation;
 
 /**
  * Class GenericServiceProvider
@@ -110,13 +114,16 @@ abstract class GenericServiceProvider extends ServiceProvider {
 
 			if ($viewComponent instanceof \Studiz\Core\Provider\Component\View)
 			{
-				/**
-				 * @todo This is only a preparation. Please finish this job #2
-				 */
+				// Navigationable
+				if ($viewComponent instanceof Navigationable)
+				{
+					$viewComponent->addNavigationNodes(Navigation::getInstance());
+					$viewComponent->addTopNavigationNodes(TopNavigation::getInstance());
+				}
 			}
 			else
 			{
-				throw new InvalidaClassException('You have to provide an instance of View here.');
+				throw new InvalidClassException('You have to provide an instance of View here.');
 			}
 		}
 	}
