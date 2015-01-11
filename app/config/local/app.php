@@ -42,5 +42,6 @@ return array(
 	'providers' => append_config(array(
 		 '\Studiz\Core\CoreServiceProvider',
 		 '\Studiz\Dashboard\DashboardServiceProvider',
+		 '\Studiz\Theme\ThemeServiceProvider',
 	 ))
 );

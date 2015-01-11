@@ -1,8 +1,14 @@
 <?php namespace Studiz\Theme;
 
-use Illuminate\Support\ServiceProvider;
+use Studiz\Core\Provider\GenericServiceProvider;
 
-class ThemeServiceProvider extends ServiceProvider {
+/**
+ * Class ThemeServiceProvider
+ *
+ * @author  Selcuk Kekec <senycorp@googlemail.com>
+ * @package Studiz\Theme
+ */
+class ThemeServiceProvider extends GenericServiceProvider {
 
 	/**
 	 * Indicates if loading of the provider is deferred.
@@ -10,16 +16,6 @@ class ThemeServiceProvider extends ServiceProvider {
 	 * @var bool
 	 */
 	protected $defer = false;
-
-	/**
-	 * Bootstrap the application events.
-	 *
-	 * @return void
-	 */
-	public function boot()
-	{
-		$this->package('studiz/theme');
-	}
 
 	/**
 	 * Register the service provider.
@@ -41,4 +37,23 @@ class ThemeServiceProvider extends ServiceProvider {
 		return array();
 	}
 
+	/**
+	 * Get package name
+	 *
+	 * @return string
+	 */
+	protected function getPackageName()
+	{
+		return 'studiz/theme';
+	}
+
+	/**
+	 * Get root directory of package
+	 *
+	 * @return string
+	 */
+	protected function getPackageDirectory()
+	{
+		return __DIR__ . '/../../../';
+	}
 }
