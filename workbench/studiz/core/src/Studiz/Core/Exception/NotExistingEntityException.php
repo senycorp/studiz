@@ -6,6 +6,7 @@
  * @author Selcuk Kekec <senycorp@googlemail.com>
  * @package Studiz\Core\Exception
  */
-class NotExistingEntityException extends CoreException {
+class NotExistingEntityException extends CoreException
+{
 
 }

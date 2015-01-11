@@ -6,7 +6,8 @@
  * @author  Selcuk Kekec <senycorp@googlemail.com>
  * @package Studiz\Core\Provider
  */
-interface Routable extends Providable {
+interface Routable extends Providable
+{
 
     /**
      * Get path to router file

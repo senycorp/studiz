@@ -6,7 +6,8 @@
  * @author Selcuk Kekec <senycorp@googlemail.com>
  * @package Studiz\Core\Provider\Component
  */
-abstract class Boot {
+abstract class Boot
+{
 
     /**
      * Before
@@ -21,7 +22,7 @@ abstract class Boot {
     /**
      * After
      *
-     * @param \Studiz\Core\Provider\Component\Request  $request
+     * @param \Studiz\Core\Provider\Component\Request $request
      * @param \Studiz\Core\Provider\Component\Response $response
      * @todo refactor params
      *

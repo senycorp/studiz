@@ -9,7 +9,8 @@ use Studiz\Core\View\Navigation\TopNavigation;
  * @author  Selcuk Kekec <senycorp@googlemail.com>
  * @package Studiz\Core\Provider
  */
-interface Navigationable {
+interface Navigationable
+{
     /**
      * Add navigation nodes
      *

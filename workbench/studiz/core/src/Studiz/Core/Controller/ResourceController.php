@@ -6,7 +6,8 @@
  * @author  Selcuk Kekec <senycorp@googlemail.com>
  * @package Studiz\Core\Controller
  */
-abstract class ResourceController extends GenericController {
+abstract class ResourceController extends GenericController
+{
     /**
      * Display a listing of the resource.
      *
@@ -34,7 +35,7 @@ abstract class ResourceController extends GenericController {
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return Response
      */
     abstract public function show($id);
@@ -43,7 +44,7 @@ abstract class ResourceController extends GenericController {
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return Response
      */
     abstract public function edit($id);
@@ -52,7 +53,7 @@ abstract class ResourceController extends GenericController {
     /**
      * Update the specified resource in storage.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return Response
      */
     abstract public function update($id);
@@ -61,7 +62,7 @@ abstract class ResourceController extends GenericController {
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return Response
      */
     abstract public function destroy($id);

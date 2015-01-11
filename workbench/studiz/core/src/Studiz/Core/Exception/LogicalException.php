@@ -6,6 +6,7 @@
  * @author Selcuk Kekec <senycorp@googlemail.com>
  * @package Studiz\Core\Exception
  */
-class LogicalException extends CoreException {
+class LogicalException extends CoreException
+{
 
 }
