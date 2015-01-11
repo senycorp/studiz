@@ -1,0 +1,7 @@
+{
+  "directory": "public",
+  "analytics": false,
+  "timeout": 120000,
+  "registry": {
+  }
+}
