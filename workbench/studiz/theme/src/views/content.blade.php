@@ -19,5 +19,5 @@
     <!-- Main content -->
     <section class="content">
         @yield('content')
-    </section>
-</aside>
+    </section><!-- /.content -->
+</aside><!-- /.right-side -->

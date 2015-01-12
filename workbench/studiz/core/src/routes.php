@@ -11,12 +11,26 @@
 |
 */
 
+/**
+ * IndexRoute
+ */
 Route::get('/', function ()
 {
     return View::make('theme::main');
 });
 
+/**
+ * Get navigation nodes as JSON
+ */
 Route::get('navigationNodes', function ()
 {
     return \Illuminate\Http\JsonResponse::create(\Studiz\Core\View\Navigation\Navigation::getInstance()->getNodes());
+});
+
+/**
+ * Get TopNavigationNodes as JSON
+ */
+Route::get('topNavigationNodes', function ()
+{
+    return \Illuminate\Http\JsonResponse::create(\Studiz\Core\View\Navigation\TopNavigation::getInstance()->getNodes());
 });

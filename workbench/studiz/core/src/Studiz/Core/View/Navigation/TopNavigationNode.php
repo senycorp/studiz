@@ -26,28 +26,56 @@ class TopNavigationNode extends Node
      *
      * @var string
      */
-    protected $title = '';
+    public $title = '';
 
     /**
      * URL of node
      *
      * @var string
      */
-    protected $url = '';
+    public $url = '';
 
     /**
      * Identifier of node
      *
      * @var string
      */
-    protected $identifier = '';
+    public $identifier = '';
+
+    /**
+     * Icon of node
+     *
+     * @var string
+     */
+    public $icon = '';
+
+    /**
+     * Text for header
+     *
+     * @var string
+     */
+    public $header = '';
+
+    /**
+     * Text for footer
+     *
+     * @var string
+     */
+    public $footer = '';
+
+    /**
+     * Count for badge
+     *
+     * @var int
+     */
+    public $badge = null;
 
     /**
      * Parent node
      *
      * @var \Studiz\Core\View\Navigation\TopNavigationNode
      */
-    protected $parentNode = null;
+    public $parentNode = null;
 
     /**
      * Create a node
@@ -166,5 +194,47 @@ class TopNavigationNode extends Node
     protected function getNodeRegister()
     {
         return self::$childrenRegister;
+    }
+
+    /**
+     * Set header
+     *
+     * @param string $header
+     *
+     * @return $this
+     */
+    public function setHeader($header)
+    {
+        $this->header = $header;
+
+        return $this;
+    }
+
+    /**
+     * Set footer
+     *
+     * @param string $footer
+     *
+     * @return $this
+     */
+    public function setFooter($footer)
+    {
+        $this->footer = $footer;
+
+        return $this;
+    }
+
+    /**
+     * Set badge count
+     *
+     * @param int $badge
+     *
+     * @return $this
+     */
+    public function setBadge($badge)
+    {
+        $this->badge = $badge;
+
+        return $this;
     }
 }

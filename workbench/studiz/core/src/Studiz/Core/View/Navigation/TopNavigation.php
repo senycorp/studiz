@@ -28,4 +28,16 @@ class TopNavigation extends TopNavigationNode
 
         return self::$instance;
     }
+
+    /**
+     * Add new child node
+     *
+     * @param \Studiz\Core\View\Navigation\TopNavigationNode $childNode
+     *
+     * @return \Studiz\Core\View\Navigation\TopNavigationNode
+     */
+    public function addChild(TopNavigationNode $childNode)
+    {
+        return $this;
+    }
 }
