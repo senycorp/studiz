@@ -1,20 +1,19 @@
 /**
  * NavigationRoutine
  *
- * This code is responsible for build the primary navigation on the leftside
+ * This code is responsible for building the primary navigation on the leftside
  *
- * @author Selcuk Kekec <senycorp@ŋooglemail.com>
+ * @author Selcuk Kekec <senycorp@googlemail.com>
  */
-$(document).ready(function() {
+$(document).ready(function () {
     $.getJSON('index.php/navigationNodes', function (data) {
         /**
          * @todo Please find another way to handle this
          */
         var firstElement = true;
 
-        $.each(data, function(index, node) {
-            if (firstElement)
-            {
+        $.each(data, function (index, node) {
+            if (firstElement) {
                 firstElement = false;
 
                 return;
@@ -26,8 +25,7 @@ $(document).ready(function() {
             // Check for parentNode
             if (node.parentNode) {
                 // Check whether structure for child elements already exists
-                if (!$('#sidebar-menu-node-' + node.parentNode.identifier).hasClass('treeview'))
-                {
+                if (!$('#sidebar-menu-node-' + node.parentNode.identifier).hasClass('treeview')) {
                     // Add treeview class
                     $('#sidebar-menu-node-' + node.parentNode.identifier).addClass('treeview');
 
@@ -35,16 +33,16 @@ $(document).ready(function() {
                     $('#sidebar-menu-node-' + node.parentNode.identifier).append('<ul class="treeview-menu"></ul>');
 
                     // Add expandable row icon
-                    $('#sidebar-menu-node-' + node.parentNode.identifier+' a').append('<i class="fa fa-angle-left pull-right"></i>');
+                    $('#sidebar-menu-node-' + node.parentNode.identifier + ' a').append('<i class="fa fa-angle-left pull-right"></i>');
                 }
 
                 // Reset parentNode to specific navigation element
-                parentNode = $('#sidebar-menu-node-' + node.parentNode.identifier+' > ul.treeview-menu');
+                parentNode = $('#sidebar-menu-node-' + node.parentNode.identifier + ' > ul.treeview-menu');
             }
 
             // Append node to tree
             parentNode.append(
-                '<li id="sidebar-menu-node-'+node.identifier+'"><a href="'+ '#' +'"><i class="fa fa-dashboard"></i> <span>'+node.title+'</span></a></li>'
+                '<li id="sidebar-menu-node-' + node.identifier + '"><a href="' + '#' + '"><i class="' + node.icon + '"></i> <span>' + node.title + '</span></a></li>'
             );
         });
 
