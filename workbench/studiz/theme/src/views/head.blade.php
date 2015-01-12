@@ -62,6 +62,9 @@ Use this file to register your js,css and other dependencies
 <!-- Navigation: Top -->
 <script src="{{asset("packages/studiz/theme/admin-lte/js/AdminLTE/topNavigation.js")}}" type="text/javascript"></script>
 
+<!-- Breadcrumb: Top -->
+<script src="{{asset("packages/studiz/theme/admin-lte/js/AdminLTE/breadcrumb.js")}}" type="text/javascript"></script>
+
 <!-- AdminLTE App -->
 <script src="{{asset("packages/studiz/theme/admin-lte/js/AdminLTE/app.js")}}" type="text/javascript"></script>
 

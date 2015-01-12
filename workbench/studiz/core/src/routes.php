@@ -34,3 +34,11 @@ Route::get('topNavigationNodes', function ()
 {
     return \Illuminate\Http\JsonResponse::create(\Studiz\Core\View\Navigation\TopNavigation::getInstance()->getNodes());
 });
+
+/**
+ * Get BreadcrumbNodes as JSON
+ */
+Route::get('breadcrumbNodes', function ()
+{
+    return \Illuminate\Http\JsonResponse::create(\Studiz\Core\View\Navigation\Breadcrumb::getInstance()->getNodes());
+});
