@@ -29,6 +29,8 @@ $(function() {
             $('.left-side').toggleClass("collapse-left");
             $(".right-side").toggleClass("strech");
         }
+
+        fix_header();
     });
 
     //Add hover support for touch devices
@@ -147,6 +149,25 @@ function fix_sidebar() {
         height: ($(window).height() - $(".header").height()) + "px",
         color: "rgba(0,0,0,0.2)"
     });
+
+    // Fix header
+    fix_header();
+}
+
+function fix_header() {
+    // Get width of sidebar
+    var sideWidth = $('.sidebar').width() + 35;
+
+    // Check for collapsed state
+    if ($('aside.left-side').hasClass('collapse-left') /*|| $('aside.right-side').hasClass('stretch')*/){
+        sideWidth = 35;
+    }
+
+    // Set content headers width
+    $('.content-header').width($(window).width() - sideWidth);
+
+    // Set padding for content
+    $('.content').css('padding-top', $('.content-header').height() + 50);
 }
 
 /*END DEMO*/

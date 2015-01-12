@@ -18,6 +18,7 @@
 
     <!-- Main content -->
     <section class="content">
+        <br/>
         @yield('content')
     </section><!-- /.content -->
 </aside><!-- /.right-side -->
