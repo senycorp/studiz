@@ -6,7 +6,8 @@
  * @author  Selcuk Kekec <senycorp@googlemail.com>
  * @package Studiz\Core\Provider
  */
-interface Eventable extends Providable {
+interface Eventable extends Providable
+{
 
     /**
      * Get event subscriber

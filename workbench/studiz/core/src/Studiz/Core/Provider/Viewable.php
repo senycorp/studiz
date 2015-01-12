@@ -6,19 +6,13 @@
  * @author  Selcuk Kekec <senycorp@googlemail.com>
  * @package Studiz\Core\Provider
  */
-interface Viewable extends Providable {
+interface Viewable extends Providable
+{
 
     /**
-     * Register navigation nodes of module
+     * Get view component
      *
-     * @return void
+     * @return \Studiz\Core\Provider\Component\View
      */
-    public function registerNavigationNode();
-
-    /**
-     * Register navigation nodes of top nav
-     *
-     * @return void
-     */
-    public function registerTopNavigationNodes();
+    public function getView();
 }

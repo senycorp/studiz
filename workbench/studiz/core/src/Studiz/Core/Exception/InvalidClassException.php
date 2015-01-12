@@ -6,6 +6,7 @@
  * @author Selcuk Kekec <senycorp@googlemail.com>
  * @package Studiz\Core\Exception
  */
-class InvalidClassException extends CoreException {
+class InvalidClassException extends CoreException
+{
 
 }

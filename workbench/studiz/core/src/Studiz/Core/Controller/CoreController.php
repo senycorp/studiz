@@ -8,6 +8,7 @@ use Illuminate\Routing\Controller;
  * @author  Selcuk Kekec <senycorp@googlemail.com>
  * @package Studiz\Core\Controller
  */
-abstract class CoreController extends Controller {
+abstract class CoreController extends Controller
+{
 
 }

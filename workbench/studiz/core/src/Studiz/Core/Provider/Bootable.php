@@ -6,7 +6,8 @@
  * @author  Selcuk Kekec <senycorp@googlemail.com>
  * @package Studiz\Core\Provider
  */
-interface Bootable extends Providable {
+interface Bootable extends Providable
+{
 
     /**
      * Get booter

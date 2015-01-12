@@ -8,6 +8,7 @@
  * @author  Selcuk Kekec <senycorp@googlemail.com>
  * @package Studiz\Core\Controller
  */
-interface Filterable {
+interface Filterable
+{
     public function setFilter();
 }

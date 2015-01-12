@@ -8,7 +8,8 @@ use Illuminate\Support\Facades\Event;
  * @author  Selcuk Kekec <senycorp@googlemail.com>
  * @package Studiz\Core\Event
  */
-interface Subscriber {
+interface Subscriber
+{
 
     /**
      * @return void
