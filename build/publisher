@@ -1,0 +1,17 @@
+#!/bin/bash
+
+#################################################
+# This script is used by phpStorms FileWatcher  #
+# to automatically update package assets in     #
+# public folder.                                #
+#################################################
+
+# Get source file
+source="$(pwd)/$1"
+
+# Build target path in public folder
+target=${1/public\/}
+target="$(pwd)/${target/workbench/public/packages}"
+
+# Copy asset
+cp $source $target
