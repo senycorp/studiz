@@ -1,0 +1,13 @@
+#!/bin/bash
+
+#################################################
+# This script will display a list of            #
+# all packages in your workbench directory      #
+#################################################
+
+# Get source file
+packages=$(find ../workbench/ -maxdepth 2 -mindepth 2)
+packages=${packages//..\/workbench\//}
+
+# Output
+echo $packages
