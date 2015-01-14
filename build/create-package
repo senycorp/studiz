@@ -1,0 +1,9 @@
+#!/bin/bash
+
+#################################################
+# This script will create a new package         #
+#################################################
+
+# Get source file
+cd ..
+php artisan workbench $1 --resources
