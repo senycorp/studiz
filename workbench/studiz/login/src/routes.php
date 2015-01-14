@@ -11,6 +11,4 @@
 |
 */
 
-Route::get('login', function() {
-    return View::make('login::main');
-});
+Route::resource('login', '\Studiz\Login\Controller\IndexController');
