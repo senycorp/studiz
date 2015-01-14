@@ -43,5 +43,6 @@ return array(
 		 '\Studiz\Core\CoreServiceProvider',
 		 '\Studiz\Dashboard\DashboardServiceProvider',
 		 '\Studiz\Theme\ThemeServiceProvider',
+		 '\Studiz\Login\LoginServiceProvider',
 	 ))
 );

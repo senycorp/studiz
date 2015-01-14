@@ -12,6 +12,7 @@ source="$(pwd)/$1"
 # Build target path in public folder
 target=${1/public\/}
 target="$(pwd)/${target/workbench/public/packages}"
+targetDirectory=${target%/*}/
 
 # Copy asset
-cp $source $target
+mkdir -p $targetDirectory && cp $source $target
