@@ -18,7 +18,7 @@ abstract class GenericController extends CoreController
         }
 
         // Loginable
-        if ($this instanceof Login)
+        if ($this instanceof LoginRequired)
         {
             /**
              * @todo Check for valid login
