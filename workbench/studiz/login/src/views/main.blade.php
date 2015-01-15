@@ -4,7 +4,7 @@
         <link href="{{asset("packages/studiz/login/css/main.css")}}" rel="stylesheet" type="text/css" />
         <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
         <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js" type="text/javascript"></script>
-        <script src="http://mymaplist.com/js/vendor/TweenLite.min.js"></script>
+        <script src="{{asset("packages/studiz/login/js/TweenLite.min.js")}}"></script>
         <script src="{{asset("packages/studiz/login/js/main.js")}}"></script>
     </head>
     <body>
@@ -12,12 +12,12 @@
             body{
                 background: url({{asset("packages/studiz/login/img/back.png")}});
                 background-color: #444;
-                background: url({{asset("packages/studiz/login/img/pinlayer2.png")}}), url({{asset("packages/studiz/login/img/pinlayer1.png")}}),url({{asset("packages/studiz/login/img/back.png")}});
+                background: url({{asset("packages/studiz/login/img/pinlayer2.png")}}),
+                            url({{asset("packages/studiz/login/img/pinlayer1.png")}}),
+                            url({{asset("packages/studiz/login/img/back.png")}});
             }
         </style>
-        <script type="text/javascript">
 
-        </script>
         <div class="container">
             <div class="login-container vertical-offset-100">
                 <div id="output"></div>
