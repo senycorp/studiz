@@ -25,7 +25,7 @@ return array(
 			'host'      => 'localhost',
 			'database'  => 'studiz',
 			'username'  => 'root',
-			'password'  => 'MKataturk89',
+			'password'  => '',
 			'charset'   => 'utf8',
 			'collation' => 'utf8_unicode_ci',
 			'prefix'    => '',

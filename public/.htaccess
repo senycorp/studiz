@@ -1,6 +1,28 @@
+<IfModule mod_php5.c>
+	php_flag	display_errors	On
+	php_flag	log_errors	On
+	php_value	error_log	temp/error_log
+	php_flag	error_reporting "E_ALL & ~E_NOTICE & ~E_DEPRECATED & ~E_STRICT"
+
+	php_value	upload_max_filesize	64M
+	php_value	file_uploads	    1
+	php_value	post_max_size		64M
+	php_value	memory_limit		256M
+
+	php_flag	magic_quotes_gpc		        Off
+	php_flag	magic_quotes_runtime		    Off
+	php_flag	zend.ze1_compatibility_mode	    Off
+	php_flag 	suhosin.session.encrypt 	    Off
+</IfModule>
+
 <IfModule mod_rewrite.c>
     <IfModule mod_negotiation.c>
         Options -MultiViews
+    </IfModule>
+
+    # Rewrite base if userdir is active
+    <IfModule mod_userdir.c>
+                RewriteBase /~senycorp/projects/studiz/public/
     </IfModule>
 
     RewriteEngine On
