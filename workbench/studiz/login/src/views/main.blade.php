@@ -9,12 +9,20 @@
     </head>
     <body>
         <style type="text/css">
+            /* Body background directives */
             body{
                 background: url({{asset("packages/studiz/login/img/back.png")}});
                 background-color: #444;
                 background: url({{asset("packages/studiz/login/img/pinlayer2.png")}}),
                             url({{asset("packages/studiz/login/img/pinlayer1.png")}}),
                             url({{asset("packages/studiz/login/img/back.png")}});
+            }
+
+            /* Default avatar placeholder image */
+            div.avatar {
+                background: url({{asset("packages/studiz/login/img/user_placeholder.jpg")}});
+                background-size: 100px 110px;
+                background-repeat: no-repeat;
             }
         </style>
 
@@ -25,12 +33,11 @@
                 <div class="form-box">
                     <form action="" method="">
                         <input name="user" type="text" placeholder="username">
-                        <input type="password" placeholder="password">
+                        <input name="password" type="password" placeholder="password">
                         <button class="btn btn-info btn-block login" type="submit">Login</button>
                     </form>
                 </div>
             </div>
-
         </div>
     </body>
 </html>

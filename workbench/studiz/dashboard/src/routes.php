@@ -11,3 +11,9 @@
 |
 */
 
+/**
+ * Route: Index
+ *
+ * Display dashboard main page
+ */
+Route::get('dashboard', array('before' => 'authenticated', 'uses' => '\Studiz\Dashboard\Controller\IndexController@index'));

@@ -1,9 +1,10 @@
 <?php namespace Studiz\Login;
 
+use Studiz\Core\Provider\Filterable;
 use Studiz\Core\Provider\GenericServiceProvider;
 use Studiz\Core\Provider\Routable;
 
-class LoginServiceProvider extends GenericServiceProvider implements Routable {
+class LoginServiceProvider extends GenericServiceProvider implements Routable, Filterable {
 
 	/**
 	 * Indicates if loading of the provider is deferred.
@@ -62,5 +63,13 @@ class LoginServiceProvider extends GenericServiceProvider implements Routable {
 		return $this->getPackageDirectory() . 'src/routes.php';
 	}
 
-
+	/**
+	 * Get path to filter file
+	 *
+	 * @return string
+	 */
+	public function getFilter()
+	{
+		return $this->getPackageDirectory() . 'src/filters.php';
+	}
 }

@@ -1,4 +1,4 @@
-<?php namespace Studiz\Login\Controller;
+<?php namespace Studiz\Dashboard\Controller;
 
 
 use Studiz\Core\Controller\LoginRequired;
@@ -13,7 +13,7 @@ class IndexController extends  ResourceController implements LoginRequired {
      */
     public function index()
     {
-        return \Response::view('login::main');
+        return \Response::view('theme::main');
     }
 
     /**

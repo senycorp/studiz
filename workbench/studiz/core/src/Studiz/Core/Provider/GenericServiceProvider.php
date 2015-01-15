@@ -36,19 +36,6 @@ abstract class GenericServiceProvider extends ServiceProvider
         // Register package
         $this->package($this->getPackageName());
 
-        // Routable
-        if ($this instanceof \Studiz\Core\Provider\Routable)
-        {
-            if (file_exists($this->getRouter()))
-            {
-                require_once $this->getRouter();
-            }
-            else
-            {
-                throw new FileNotFoundException('Router not found');
-            }
-        }
-
         // Filterable
         if ($this instanceof \Studiz\Core\Provider\Filterable)
         {
@@ -59,6 +46,19 @@ abstract class GenericServiceProvider extends ServiceProvider
             else
             {
                 throw new FileNotFoundException('Filter not found');
+            }
+        }
+
+        // Routable
+        if ($this instanceof \Studiz\Core\Provider\Routable)
+        {
+            if (file_exists($this->getRouter()))
+            {
+                require_once $this->getRouter();
+            }
+            else
+            {
+                throw new FileNotFoundException('Router not found');
             }
         }
 
