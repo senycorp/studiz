@@ -132,6 +132,12 @@ class NavigationNode extends Node
         // Set parent node
         $childNode->parentNode = $this;
 
+        // Use default icon
+        if (empty($childNode->icon))
+        {
+            $childNode->icon = 'fa fa-angle-double-right';
+        }
+
         return $this;
     }
 

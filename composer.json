@@ -5,7 +5,9 @@
 	"license": "MIT",
 	"type": "project",
 	"require": {
-		"laravel/framework": "4.2.*"
+		"laravel/framework": "4.2.*",
+		"barryvdh/laravel-ide-helper": "~1.11",
+	  	"cartalyst/sentry": "2.1.*"
 	},
 	"autoload": {
 		"classmap": [
@@ -20,14 +22,26 @@
 	"scripts": {
 		"post-install-cmd": [
 			"php artisan clear-compiled",
+		  	"php artisan ide-helper:generate",
+		  	"php artisan config:publish barryvdh/laravel-ide-helper",
+		  	"php artisan migrate --package=cartalyst/sentry",
+		  	"php artisan config:publish cartalyst/sentry",
 			"php artisan optimize"
 		],
 		"post-update-cmd": [
 			"php artisan clear-compiled",
+			"php artisan ide-helper:generate",
 			"php artisan optimize"
 		],
 		"post-create-project-cmd": [
 			"php artisan key:generate"
+		],
+	  	"migrate": [
+			"php artisan migrate --package=cartalyst/sentry",
+		  	"php artisan migrate --bench=studiz/core"
+		],
+	    "migrate-reset": [
+		   "php artisan migrate:reset"
 		]
 	},
 	"config": {

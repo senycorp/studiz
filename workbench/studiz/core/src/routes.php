@@ -12,15 +12,19 @@
 */
 
 /**
- * IndexRoute
+ * Route: BASE
+ *
+ * This base route makes a basic redirect to the dashboard module
  */
 Route::get('/', function ()
 {
-    return View::make('theme::main');
+    return Redirect::to('dashboard');
 });
 
 /**
- * Get navigation nodes as JSON
+ * Route: navigationNodes
+ *
+ * This route delivers the nodes AS JSON for the navigation on the left side
  */
 Route::get('navigationNodes', function ()
 {
@@ -28,7 +32,9 @@ Route::get('navigationNodes', function ()
 });
 
 /**
- * Get TopNavigationNodes as JSON
+ * Route: topNavigationNodes
+ *
+ * Delivers nodes for the top navigation as JSON
  */
 Route::get('topNavigationNodes', function ()
 {
@@ -36,7 +42,9 @@ Route::get('topNavigationNodes', function ()
 });
 
 /**
- * Get BreadcrumbNodes as JSON
+ * Route: breadCrumbNodes
+ *
+ * Delivers crumbs for breadcrumb navigation as JSON
  */
 Route::get('breadcrumbNodes', function ()
 {

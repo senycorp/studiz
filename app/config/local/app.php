@@ -43,5 +43,10 @@ return array(
 		 '\Studiz\Core\CoreServiceProvider',
 		 '\Studiz\Dashboard\DashboardServiceProvider',
 		 '\Studiz\Theme\ThemeServiceProvider',
+		 '\Studiz\Login\LoginServiceProvider',
+		 '\Studiz\Subject\SubjectServiceProvider',
+		 '\Studiz\Semester\SemesterServiceProvider',
+		 '\Studiz\Calendar\CalendarServiceProvider',
+		 '\Studiz\Drive\DriveServiceProvider',
 	 ))
 );

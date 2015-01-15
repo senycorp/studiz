@@ -6,7 +6,7 @@
 <header class="header">
     <a href="index.html" class="logo">
         <!-- Add the class icon to your logo image or logo icon to add the margining -->
-        AdminLTE
+        Studiz
     </a>
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top" role="navigation">
@@ -28,7 +28,7 @@
                     <ul class="dropdown-menu">
                         <!-- User image -->
                         <li class="user-header bg-light-blue">
-                            <img src="img/avatar3.png" class="img-circle" alt="User Image" />
+                            <img src="{{asset("packages/studiz/theme/admin-lte/img/avatar3.png")}}" class="img-circle" alt="User Image" />
                             <p>
                                 Jane Doe - Web Developer
                                 <small>Member since Nov. 2012</small>
