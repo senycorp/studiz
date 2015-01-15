@@ -1,0 +1,23 @@
+{
+    "name": "studiz/subject",
+    "description": "",
+    "authors": [
+        {
+            "name": "Selcuk Kekec",
+            "email": "senycorp@googlemail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0",
+        "illuminate/support": "4.2.*"
+    },
+    "autoload": {
+        "classmap": [
+            "src/migrations"
+        ],
+        "psr-0": {
+            "Studiz\\Subject\\": "src/"
+        }
+    },
+    "minimum-stability": "stable"
+}
