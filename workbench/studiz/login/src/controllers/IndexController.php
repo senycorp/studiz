@@ -5,7 +5,7 @@ use Studiz\Core\Controller\LoginRequired;
 use Studiz\Core\Controller\ResourceController;
 use Studiz\Core\Controller\Response;
 
-class IndexController extends  ResourceController implements LoginRequired {
+class IndexController extends  ResourceController {
     /**
      * Display a listing of the resource.
      *

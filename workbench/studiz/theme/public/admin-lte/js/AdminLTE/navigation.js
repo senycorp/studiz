@@ -42,7 +42,7 @@ $(document).ready(function () {
 
             // Append node to tree
             parentNode.append(
-                '<li id="sidebar-menu-node-' + node.identifier + '"><a href="' + '#' + '"><i class="' + node.icon + '"></i> <span>' + node.title + '</span></a></li>'
+                '<li id="sidebar-menu-node-' + node.identifier + '"><a href="' + node.url + '"><i class="' + node.icon + '"></i> <span>' + node.title + '</span></a></li>'
             );
         });
 
