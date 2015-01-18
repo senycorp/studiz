@@ -1,6 +1,7 @@
 <?php namespace Studiz\Core;
 
 use Studiz\Core\Provider\GenericServiceProvider;
+use Studiz\Core\Provider\Initializable;
 use Studiz\Core\Provider\Routable;
 
 /**
@@ -9,7 +10,7 @@ use Studiz\Core\Provider\Routable;
  * @author  Selcuk Kekec <senycorp@googlemail.com>
  * @package Studiz\Core
  */
-class CoreServiceProvider extends GenericServiceProvider implements Routable
+class CoreServiceProvider extends GenericServiceProvider implements Routable, Initializable
 {
 
     /**
@@ -68,4 +69,30 @@ class CoreServiceProvider extends GenericServiceProvider implements Routable
     {
         return $this->getPackageDirectory() . 'src/routes.php';
     }
+
+    /**
+     * Initialize and set up common dependencies
+     * while provider is booting
+     *
+     * @return string
+     */
+    public function initializeProvider()
+    {
+        // Disable view cache in local environment
+        \App::before(function($request)
+        {
+            // Clear view cache in sandbox (only) with every request
+            if (\App::environment() == 'local') {
+                $cachedViewsDirectory=app('path.storage').'/views/';
+                $files = glob($cachedViewsDirectory.'*');
+                foreach($files as $file) {
+                    if(is_file($file)) {
+                        @unlink($file);
+                    }
+                }
+            }
+        });
+    }
+
+
 }

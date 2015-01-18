@@ -16,7 +16,11 @@ abstract class GenericResourceController extends GenericController
      */
     public function index()
     {
-        return $this->getViewIndex();
+        $view = $this->getViewIndex();
+
+        $view->models = $this->getModel()->all();
+
+        return $view;
     }
 
 
@@ -97,8 +101,9 @@ abstract class GenericResourceController extends GenericController
      * @param  int $id
      * @return Response
      */
-    public function destroy($id)
+    public function destroy($id=NULL)
     {
+        $id = Input::get('id');
         $this->getModel()->find($id)->delete();
     }
 
@@ -154,9 +159,9 @@ abstract class GenericResourceController extends GenericController
     /**
      * Get data for model
      *
-     * @param $data
+     * @param array $data
      *
-     * @return mixed
+     * @return array
      */
     protected function getModelData(array $data)
     {
