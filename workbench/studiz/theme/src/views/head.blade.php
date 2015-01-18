@@ -56,6 +56,9 @@ Use this file to register your js,css and other dependencies
 <!-- iCheck -->
 <script src="{{asset("packages/studiz/theme/admin-lte/js/plugins/iCheck/icheck.min.js")}}" type="text/javascript"></script>
 
+<!-- jquery.rest -->
+<script src="{{asset("packages/studiz/theme/jquery.rest/dist/1/jquery.rest.js")}}" type="text/javascript"></script>
+
 <!-- Navigation: Left side -->
 <script src="{{asset("packages/studiz/theme/admin-lte/js/AdminLTE/navigation.js")}}" type="text/javascript"></script>
 
