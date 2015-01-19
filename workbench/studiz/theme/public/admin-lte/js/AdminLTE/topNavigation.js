@@ -6,8 +6,7 @@
  * @author Selcuk Kekec <senycorp@googlemail.com>
  */
 $(document).ready(function () {
-
-    $.getJSON('index.php/topNavigationNodes', function (data) {
+    $.getJSON($studiz.makeURL('topNavigationNodes'), function (data) {
         /**
          * @todo Please find another way to handle this
          */
