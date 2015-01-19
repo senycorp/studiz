@@ -6,7 +6,7 @@
  * @author Selcuk Kekec <senycorp@googlemail.com>
  */
 $(document).ready(function () {
-    $.getJSON($studiz.makeURL('breadcrumpNodes'), function (data) {
+    $.getJSON($studiz.makeURL('breadcrumbNodes'), function (data) {
         /**
          * @todo Please find another way to handle this
          */
