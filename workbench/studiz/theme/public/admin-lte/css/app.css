@@ -1,8 +1,0 @@
-/**
- * Use this file for custom css rules.
- * Do not edit the core stylesheets!
- */
-
-body.fixed .content-header {
-    position: fixed !important;
-}
