@@ -86,7 +86,7 @@ class ThemeServiceProvider extends GenericServiceProvider implements Initializab
         });
 
         /**
-         * Delete url
+         * Create url
          *
          * @param title
          * @param url
@@ -97,7 +97,25 @@ class ThemeServiceProvider extends GenericServiceProvider implements Initializab
             $baseURL = \URL::to('/');
             $compiler = '$1 <?php
 		$params= array$2;
-		echo "<a href=\'' . $baseURL . '/{$params[1]}\' data-method=\'PUT\' class=\'".array_get($params, \'2\', \'\')."\'>{$params[0]}</a>"
+		echo "<a href=\'' . $baseURL . '/{$params[1]}\' data-method=\'POST\' class=\'btn btn-default ".array_get($params, \'2\', \'\')."\'>{$params[0]}</a>"
+	?>';
+
+            return preg_replace($pattern, $compiler, $view);
+        });
+
+        /**
+         * Save url
+         *
+         * @param title
+         * @param url
+         * @param class
+         */
+        \Blade::extend(function ($view, $compiler) {
+            $pattern = $compiler->createMatcher('a.updater');
+            $baseURL = \URL::to('/');
+            $compiler = '$1 <?php
+		$params= array$2;
+		echo "<input type=\'hidden\' name=\'_method\' value=\'PUT\' \/><a href=\'' . $baseURL . '/{$params[1]}\' data-method=\'PUT\' class=\'btn btn-default ".array_get($params, \'2\', \'\')."\'>{$params[0]}</a>"
 	?>';
 
             return preg_replace($pattern, $compiler, $view);

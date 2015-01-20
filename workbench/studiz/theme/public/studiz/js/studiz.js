@@ -138,6 +138,82 @@ $(document).ready(function() {
                             fix_header();
                         });
                     }
+                    else if (method == 'POST')
+                    {
+                        // Get closest form
+                        var form = a.closest('form');
+
+                        if (form)
+                        {
+                            // Get URL and baseNode
+                            var url = $.url(href);
+                            var baseNode = url.segment()[url.segment().length-1];
+
+                            // Serialize form
+                            var serializedForm = form.serializeObject();
+
+                            // Add baseNode to rest client if needed
+                            if (!$studiz.client[baseNode]) {
+                                $studiz.client.add(baseNode);
+                            }
+
+                            // Add baseNode to rest client if needed
+                            if (!$studiz.client[baseNode]) {
+                                $studiz.client.add(baseNode);
+                            }
+
+                            // Replace state instead of adding
+                            history.pushState({
+                                method: method
+                            }, '', href);
+
+                            // Perform POST request and put response into content
+                            $.post( href, serializedForm, function( jqXHR ) {
+                                $main.html($('aside.right-side', jqXHR).html());
+                                fix_header();
+                            });
+                        }
+                    }
+                    else if (method == 'PUT')
+                    {
+                        // Get closest form
+                        var form = a.closest('form');
+
+                        if (form)
+                        {
+                            // Get URL and baseNode
+                            var url = $.url(href);
+                            var baseNode = url.segment()[url.segment().length-2];
+
+                            // Serialize form
+                            var serializedForm = form.serializeObject();
+
+                            // Add baseNode to rest client if needed
+                            if (!$studiz.client[baseNode]) {
+                                $studiz.client.add(baseNode);
+                            }
+
+                            // Add baseNode to rest client if needed
+                            if (!$studiz.client[baseNode]) {
+                                $studiz.client.add(baseNode);
+                            }
+
+                            // Replace state instead of adding
+                            history.pushState({
+                                method: method
+                            }, '', href);
+
+                            // Perform POST request and put response into content
+                            $studiz.client[baseNode].update(url.segment()[url.segment().length-1], serializedForm).fail(function(jqXHR, textStatus) {
+                                $main.html($('aside.right-side', jqXHR.responseText).html());
+                                fix_header();
+                            });
+                            /*$.put( href, serializedForm, function( jqXHR ) {
+                                $main.html($('aside.right-side', jqXHR).html());
+                                fix_header();
+                            });*/
+                        }
+                    }
 
                     return false;
                 }

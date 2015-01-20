@@ -63,6 +63,8 @@ Use this file to register your js,css and other dependencies
 <script src="{{asset("packages/studiz/theme/jquery.rest/dist/1/jquery.rest.js")}}" type="text/javascript"></script>
 <!-- purl -->
 <script src="{{asset("packages/studiz/theme/purl/purl.js")}}" type="text/javascript"></script>
+<!-- SerializeObject -->
+<script src="{{asset("packages/studiz/theme/jQuery.serializeObject/jquery.serializeObject.js")}}" type="text/javascript"></script>
 
 <!-- studiz -->
 <script src="{{asset("packages/studiz/theme/studiz/js/studiz.js")}}" type="text/javascript"></script>

@@ -31,7 +31,10 @@ abstract class GenericResourceController extends GenericController
      */
     public function create()
     {
-        return $this->getViewCreate();
+        $view = $this->getViewCreate();
+        $view->model = $this->getModel();
+
+        return $view;
     }
 
 
@@ -46,7 +49,7 @@ abstract class GenericResourceController extends GenericController
         $model->setRawAttributes($this->getModelData(\Input::all()));
         $model->save();
 
-        return \Redirect::to($this->getBaseURL() . '/' . $model->id);
+        return $this->show($model->id);
     }
 
 
@@ -89,9 +92,13 @@ abstract class GenericResourceController extends GenericController
      */
     public function update($id)
     {
+        $data = $this->getModelData(\Input::all());
+        if (isset($data['_method'])) unset($data['_method']);
         $model = $this->getModel()->findOrFail($id);
+        $model->setRawAttributes($data);
+        $model->save();
 
-
+        return $this->show($id);
     }
 
 
@@ -103,8 +110,14 @@ abstract class GenericResourceController extends GenericController
      */
     public function destroy($id=NULL)
     {
-        $id = Input::get('id');
-        $this->getModel()->find($id)->delete();
+        $model = $this->getModel();
+
+        if ($foundModel = $model->find($id))
+        {
+            $foundModel->delete();
+        }
+
+        return $this->index();
     }
 
     /**
@@ -121,7 +134,7 @@ abstract class GenericResourceController extends GenericController
      */
     protected function getViewIndex()
     {
-        return \View::make($this->getViewPackage() . '::' . 'index');
+        return \View::make($this->getViewPackage() . '::' . 'index', array('pageHeader' => $this->getPageHeader(), 'pageSubHeader' => $this->getPageSubHeader()));
     }
 
     /**
@@ -131,7 +144,7 @@ abstract class GenericResourceController extends GenericController
      */
     protected function getViewCreate()
     {
-        return \View::make($this->getViewPackage() . '::' . 'create');
+        return \View::make($this->getViewPackage() . '::' . 'create', array('pageHeader' => $this->getPageHeader(), 'pageSubHeader' => $this->getPageSubHeader()));
     }
 
     /**
@@ -141,12 +154,12 @@ abstract class GenericResourceController extends GenericController
      */
     protected function getViewEdit()
     {
-        return \View::make($this->getViewPackage() . '::' . 'create');
+        return \View::make($this->getViewPackage() . '::' . 'create', array('pageHeader' => $this->getPageHeader(), 'pageSubHeader' => $this->getPageSubHeader()));
     }
 
     protected function getViewShow()
     {
-        return \View::make($this->getViewPackage() . '::' . 'view');
+        return \View::make($this->getViewPackage() . '::' . 'view', array('pageHeader' => $this->getPageHeader(), 'pageSubHeader' => $this->getPageSubHeader()));
     }
 
     /**
@@ -169,4 +182,8 @@ abstract class GenericResourceController extends GenericController
     }
 
     abstract protected function getBaseURL();
+
+    abstract protected function getPageHeader();
+
+    abstract protected function getPageSubHeader();
 }

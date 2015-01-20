@@ -26,6 +26,7 @@
     "jquery-ui": "~1.11.2",
     "raphael": "~2.1.2",
     "ionicons": "~2.0.1",
-    "font-awesome": "~4.2.0"
+    "font-awesome": "~4.2.0",
+    "jQuery.serializeObject": "~2.0.3"
   }
 }

@@ -13,7 +13,7 @@ class IndexController extends  ResourceController implements LoginRequired {
      */
     public function index()
     {
-        return \Response::view('theme::main');
+        return \View::make('theme::main', array('pageHeader' => 'Dashboard', 'pageSubHeader' => 'Your dash your rules'));
     }
 
     /**

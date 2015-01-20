@@ -3,5 +3,5 @@
 @section('content')
     Subject {{$model->title}}
 
-    <a href="{{$model->id}}" data-method="delete">Delete</a>
+    @a.deletor('Delete Subject', 'subject/'.$model->id, 'active')
 @stop
