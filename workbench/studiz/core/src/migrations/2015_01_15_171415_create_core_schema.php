@@ -66,6 +66,10 @@ class CreateCoreSchema extends Migration
 
             $table->timestamps();
         });
+
+        Schema::table('users', function($table) {
+             $table->string('picture');
+        });
     }
 
     /**

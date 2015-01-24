@@ -28,9 +28,10 @@
                     <ul class="dropdown-menu">
                         <!-- User image -->
                         <li class="user-header bg-light-blue">
-                            <img src="{{asset("packages/studiz/theme/admin-lte/img/avatar3.png")}}" class="img-circle" alt="User Image" />
+                            <img src="{{Sentry::getUser()->picture}}" class="img-circle" alt="User Image" />
                             <p>
                                 {{Sentry::getUser()->first_name}} {{Sentry::getUser()->last_name}}
+                                <small>{{Sentry::getUser()->email}}</small>
                                 <small>Last login at {{Sentry::getUser()->last_login}}</small>
                             </p>
                         </li>

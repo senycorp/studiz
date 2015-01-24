@@ -11,7 +11,7 @@ return array(
     /**
      * Storage
      */
-    //'storage'   => 'Session',
+    'storage'   => 'Session',
 
     /**
      * Consumers
@@ -27,6 +27,14 @@ return array(
             'scope'         => array('email','read_friendlists','user_online_presence'),
         ),
 
+        /**
+         * Google
+         */
+        'Google' => array(
+            'client_id'     => '191410386444-mn7637i6p9bu32ot3t51tpiakulbehji.apps.googleusercontent.com',
+            'client_secret' => 'xSjDp0kiPMtly-Md1rJ-LAyG',
+            'scope'         => array('userinfo_email', 'userinfo_profile'),
+        ),
     )
 
 );

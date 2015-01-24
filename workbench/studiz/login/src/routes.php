@@ -91,22 +91,34 @@ Route::get('logout', function() {
  * Route: OAuth2 for facebook
  *
  */
-Route::get('oauth/facebook', function () {
-    // get data from input
+Route::get('oauth/{driver}', function () {
+
+    $oAuth = null;
+
+    switch(\Route::input('driver'))
+    {
+        case 'facebook':
+            $oAuth = \Studiz\Core\Component\OAuth\Facebook::getInstance();
+            break;
+        case 'google':
+            $oAuth = \Studiz\Core\Component\OAuth\Google::getInstance();
+            break;
+        default:
+            throw new \Exception('Failed to load oAuth driver.');
+    }
+
+    // Get code
     $code = \Input::get( 'code' );
 
-    // get fb service
-    $fb = \OAuth::consumer( 'Facebook' );
-
-    // check if code is valid
-
     // if code is provided get user data and sign in
     if ( !empty( $code ) ) {
-
         try
         {
-            // This was a callback request from facebook, get the token
-            $token = $fb->requestAccessToken( $code );
+            $user = $oAuth->handle($code);
+
+            Sentry::login($user, true);
+
+            return Redirect::to('/');
         }
         catch (Exception $e)
         {
@@ -114,114 +126,11 @@ Route::get('oauth/facebook', function () {
 
             return Redirect::refresh();
         }
-
-        // Send a request with it
-        $result = json_decode( $fb->request( '/me' ), true );
-
-        $users = \Studiz\Login\Model\User::whereMod(array(
-            'email' => $result['email'],
-            'first_name' => $result['first_name'],
-            'last_name' => $result['last_name'],
-        ));
-
-        if ($users->count() == 0)
-        {
-            $user = Sentry::register(array(
-                'email' => $result['email'],
-                'first_name' => $result['first_name'],
-                'last_name' => $result['last_name'],
-                'password' => md5(time())
-            ), true);
-        }
-        else
-        {
-            $user = $users->first();
-            $user = Sentry::findUserByCredentials(array(
-                'email' => $user->email,
-            ));
-        }
-
-        Sentry::login($user, true);
-
-        return Redirect::to('/');
     }
-    // if not ask for permission first
-    else {
-        // get fb authorization
-        $url = $fb->getAuthorizationUri();
-
-        // return to facebook login url
-        return Redirect::to( (string)$url );
-    }
-});
-
-/**
- * Route: OAuth2
- *
- * Sync and login user from
- */
-Route::get('oauth/google', function () {
-    // get data from input
-    $code = Input::get( 'code' );
-
-    // get google service
-    $googleService = OAuth::consumer( 'Google' );
-
-    // check if code is valid
-
-    // if code is provided get user data and sign in
-    if ( !empty( $code ) ) {
-
-        try
-        {
-            // This was a callback request from google, get the token
-            $token = $googleService->requestAccessToken( $code );
-        }
-        catch (Exception $e)
-        {
-            unset($_GET['code']);
-
-            return Redirect::refresh();
-        }
-
-        // Send a request with it
-        $result = json_decode( $googleService->request( 'https://www.googleapis.com/oauth2/v1/userinfo' ), true );
-
-
-        $users = \Studiz\Login\Model\User::whereMod(array(
-            'email' => $result['email'],
-            'first_name' => $result['first_name'],
-            'last_name' => $result['last_name'],
-        ));
-
-        if ($users->count() == 0)
-        {
-            $user = Sentry::register(array(
-                'email' => $result['email'],
-                'first_name' => $result['first_name'],
-                'last_name' => $result['last_name'],
-                'password' => md5(time())
-            ), true);
-        }
-        else
-        {
-            $user = $users->first();
-            $user = Sentry::findUserByCredentials(array(
-                'email' => $user->email,
-            ));
-        }
-
-        Sentry::login($user, true);
-
-        return Redirect::to('/');
-    }
-    // if not ask for permission first
-    else {
-        // get fb authorization
-        $url = $fb->getAuthorizationUri();
-
-        // return to facebook login url
-        return Redirect::to( (string)$url );
+    else
+    {
+        // if not ask for permission first
+        return Redirect::to( (string)$oAuth->getAuthURL() );
     }
 });
 

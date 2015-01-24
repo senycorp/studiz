@@ -30,7 +30,7 @@
             <a class="btn btn-block btn-social btn-facebook" href="oauth/facebook">
                 <i class="fa fa-facebook"></i> Sign in with Facebook
             </a>
-            <a class="btn btn-block btn-social btn-google-plus">
+            <a class="btn btn-block btn-social btn-google-plus" href="oauth/google">
                 <i class="fa fa-google-plus"></i> Sign in with Google
             </a>
             <div class="login-container vertical-offset-100">
