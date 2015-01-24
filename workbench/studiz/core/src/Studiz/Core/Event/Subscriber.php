@@ -10,8 +10,9 @@ use Illuminate\Support\Facades\Event;
  */
 interface Subscriber
 {
-
     /**
+     * Subscribe to events.
+     *
      * @return void
      */
     public function subscribe(Event $events);

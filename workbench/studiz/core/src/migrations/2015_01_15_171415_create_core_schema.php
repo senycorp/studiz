@@ -30,6 +30,8 @@ class CreateCoreSchema extends Migration
         {
             $table->increments('id');
             $table->string('title');
+            $table->string('color');
+            $table->text('description');
 
             $table->integer('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');

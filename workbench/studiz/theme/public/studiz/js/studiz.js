@@ -112,7 +112,11 @@ $(document).ready(function() {
                         }, '', href);
 
                         // Load content from url
-                        $main.load(href + " aside.right-side>*", function() {
+                        $main.load(href + " aside.right-side>*", function(response, status, xhr) {
+                            if (xhr.status == 401)
+                            {
+                                window.location.reload();
+                            }
                             fix_header();
                         });
                     }

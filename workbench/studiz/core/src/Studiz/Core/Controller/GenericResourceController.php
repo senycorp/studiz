@@ -1,8 +1,13 @@
 <?php namespace Studiz\Core\Controller;
+
 use Illuminate\Support\Facades\Redirect;
 
 /**
  * Class GenericResourceController
+ *
+ * This GenericResourceController implements
+ * all common procedures needed by a restfull
+ * controller.
  *
  * @author  Selcuk Kekec <senycorp@googlemail.com>
  * @package Studiz\Core\Controller
@@ -16,8 +21,10 @@ abstract class GenericResourceController extends GenericController
      */
     public function index()
     {
+        // Get index view
         $view = $this->getViewIndex();
 
+        // Set models to appear in the listing
         $view->models = $this->getModel()->all();
 
         return $view;
@@ -31,7 +38,10 @@ abstract class GenericResourceController extends GenericController
      */
     public function create()
     {
+        // Get create form view
         $view = $this->getViewCreate();
+
+        // Set empty model
         $view->model = $this->getModel();
 
         return $view;
@@ -45,10 +55,16 @@ abstract class GenericResourceController extends GenericController
      */
     public function store()
     {
+        // Get Model
         $model = $this->getModel();
+
+        // Set attributes of model
         $model->setRawAttributes($this->getModelData(\Input::all()));
+
+        // Save it!
         $model->save();
 
+        // Show the resource
         return $this->show($model->id);
     }
 
@@ -57,11 +73,15 @@ abstract class GenericResourceController extends GenericController
      * Display the specified resource.
      *
      * @param  int $id
+     *
      * @return Response
      */
     public function show($id)
     {
+        // Get view mode view
         $view = $this->getViewShow();
+
+        // Set model in view
         $view->model = $this->getModel()->findOrFail($id);
 
         return $view;
@@ -72,12 +92,15 @@ abstract class GenericResourceController extends GenericController
      * Show the form for editing the specified resource.
      *
      * @param  int $id
+     *
      * @return Response
      */
     public function edit($id)
     {
+        // Get edit view
         $view = $this->getViewEdit();
 
+        // Set model
         $view->model = $this->getModel()->findOrFail($id);
 
         return $view;
@@ -88,14 +111,24 @@ abstract class GenericResourceController extends GenericController
      * Update the specified resource in storage.
      *
      * @param  int $id
+     *
      * @return Response
      */
     public function update($id)
     {
+        // Get model data
         $data = $this->getModelData(\Input::all());
-        if (isset($data['_method'])) unset($data['_method']);
+
+        // Replace hidden _method field
+        if (isset( $data[ '_method' ] )) unset( $data[ '_method' ] );
+
+        // Find model
         $model = $this->getModel()->findOrFail($id);
+
+        // Set data
         $model->setRawAttributes($data);
+
+        // Save model
         $model->save();
 
         return $this->show($id);
@@ -106,22 +139,29 @@ abstract class GenericResourceController extends GenericController
      * Remove the specified resource from storage.
      *
      * @param  int $id
+     *
      * @return Response
      */
-    public function destroy($id=NULL)
+    public function destroy($id = null)
     {
+        // Get empty model
         $model = $this->getModel();
 
-        if ($foundModel = $model->find($id))
-        {
+        // Check for existing model first
+        if ($foundModel = $model->find($id)) {
+            // Delete it
             $foundModel->delete();
         }
 
+        // Show index page
         return $this->index();
     }
 
     /**
      * Get base view package string
+     *
+     * This should return the packages
+     * base name as string.
      *
      * @return string
      */
@@ -130,36 +170,42 @@ abstract class GenericResourceController extends GenericController
     /**
      * Get View for index
      *
-     * @return \Illuminate\View\View
+     * @return \Illuminate\View\View    Index view for list all entities
      */
     protected function getViewIndex()
     {
-        return \View::make($this->getViewPackage() . '::' . 'index', array('pageHeader' => $this->getPageHeader(), 'pageSubHeader' => $this->getPageSubHeader()));
+        return \View::make($this->getViewPackage() . '::' . 'index', array( 'pageHeader'    => $this->getPageHeader(),
+                                                                            'pageSubHeader' => $this->getPageSubHeader()
+        ));
     }
 
     /**
      * Get view for create
      *
-     * @return \Illuminate\View\View
+     * @return \Illuminate\View\View    Create/Edit view for manipulating resources
      */
     protected function getViewCreate()
     {
-        return \View::make($this->getViewPackage() . '::' . 'create', array('pageHeader' => $this->getPageHeader(), 'pageSubHeader' => $this->getPageSubHeader()));
+        return \View::make($this->getViewPackage() . '::' . 'create', array( 'pageHeader'    => $this->getPageHeader(),
+                                                                             'pageSubHeader' => $this->getPageSubHeader()
+        ));
     }
 
     /**
      * Get view for edit
      *
-     * @return \Illuminate\View\View
+     * @return \Illuminate\View\View    Create/Edit view for manipulating resources
      */
     protected function getViewEdit()
     {
-        return \View::make($this->getViewPackage() . '::' . 'create', array('pageHeader' => $this->getPageHeader(), 'pageSubHeader' => $this->getPageSubHeader()));
+        return $this->getViewCreate();
     }
 
     protected function getViewShow()
     {
-        return \View::make($this->getViewPackage() . '::' . 'view', array('pageHeader' => $this->getPageHeader(), 'pageSubHeader' => $this->getPageSubHeader()));
+        return \View::make($this->getViewPackage() . '::' . 'view', array( 'pageHeader'    => $this->getPageHeader(),
+                                                                           'pageSubHeader' => $this->getPageSubHeader()
+        ));
     }
 
     /**
@@ -172,18 +218,34 @@ abstract class GenericResourceController extends GenericController
     /**
      * Get data for model
      *
+     * This method ist responsible for adding
+     * and removing unnecessary stuff from
+     * global data provider.
+     *
      * @param array $data
      *
      * @return array
      */
-    protected function getModelData(array $data)
-    {
-        return $data;
-    }
+    abstract protected function getModelData(array $data);
 
+    /**
+     * Get the base url to package
+     *
+     * @return string
+     */
     abstract protected function getBaseURL();
 
+    /**
+     * Get main page header
+     *
+     * @return string
+     */
     abstract protected function getPageHeader();
 
+    /**
+     * Get sub page header
+     *
+     * @return string
+     */
     abstract protected function getPageSubHeader();
 }

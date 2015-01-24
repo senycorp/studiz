@@ -3,6 +3,10 @@
 /**
  * Class ResourceController
  *
+ * The ResourceController helps you implementing
+ * an restfull controller based on the needs of
+ * laravel.
+ *
  * @author  Selcuk Kekec <senycorp@googlemail.com>
  * @package Studiz\Core\Controller
  */

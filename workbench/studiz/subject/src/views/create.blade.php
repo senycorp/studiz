@@ -9,6 +9,12 @@
             </div>
         </div>
         <div class="form-group">
+            <label for="inputEmail3" class="col-sm-2 control-label">Color</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control my-colorpicker1"/>
+            </div>
+        </div>
+        <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">
                 @if ($model->id)
                     @a.updater('Save', 'subject/'.$model->id)

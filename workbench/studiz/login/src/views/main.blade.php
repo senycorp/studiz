@@ -27,6 +27,12 @@
         </style>
 
         <div class="container">
+            <a class="btn btn-block btn-social btn-facebook" href="oauth/facebook">
+                <i class="fa fa-facebook"></i> Sign in with Facebook
+            </a>
+            <a class="btn btn-block btn-social btn-google-plus">
+                <i class="fa fa-google-plus"></i> Sign in with Google
+            </a>
             <div class="login-container vertical-offset-100">
                 <div id="output"></div>
                 <div class="avatar"></div>
