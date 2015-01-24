@@ -11,7 +11,13 @@
         <div class="form-group">
             <label for="inputEmail3" class="col-sm-2 control-label">Color</label>
             <div class="col-sm-10">
-                <input type="text" class="form-control my-colorpicker1"/>
+                <input type="text" name="color" class="form-control colorpicker" value="{{$model->color}}"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputEmail3" class="col-sm-2 control-label">Description</label>
+            <div class="col-sm-10">
+                <textarea name="description" class="form-control">{{$model->description}}</textarea>
             </div>
         </div>
         <div class="form-group">
@@ -24,4 +30,19 @@
             </div>
         </div>
     </form>
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $(".colorpicker").ColorPickerSliders({
+                size: 'sm',
+                placement: 'bottom',
+                swatches: false,
+                sliders: false,
+                hsvpanel: true,
+                previewformat: 'hex'
+            });
+
+            $('textarea').wysihtml5();
+        });
+    </script>
 @stop

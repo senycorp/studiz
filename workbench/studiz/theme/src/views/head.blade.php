@@ -15,6 +15,8 @@ Use this file to register your js,css and other dependencies
 <link href="{{asset("packages/studiz/theme/font-awesome/css/font-awesome.css")}}" rel="stylesheet" type="text/css" />
 <!-- Ionicons -->
 <link href="{{asset("packages/studiz/theme/ionicons/css/ionicons.css")}}" rel="stylesheet" type="text/css" />
+<!-- Bootstrap Color Picker -->
+<link href="{{asset("packages/studiz/theme/bootstrap-colorpickersliders/dist/bootstrap.colorpickersliders.css")}}" rel="stylesheet"/>
 <!-- Morris chart -->
 <link href="{{asset("packages/studiz/theme/admin-lte/css/morris/morris.css")}}" rel="stylesheet" type="text/css" />
 <!-- jvectormap -->
@@ -57,6 +59,9 @@ Use this file to register your js,css and other dependencies
 <script src="{{asset("packages/studiz/theme/admin-lte/js/plugins/datepicker/bootstrap-datepicker.js")}}" type="text/javascript"></script>
 <!-- Bootstrap WYSIHTML5 -->
 <script src="{{asset("packages/studiz/theme/admin-lte/js/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js")}}" type="text/javascript"></script>
+<!-- Colorpicker -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/tinycolor/0.11.1/tinycolor.min.js"></script>
+<script src="{{asset("packages/studiz/theme/bootstrap-colorpickersliders/dist/bootstrap.colorpickersliders.js")}}" type="text/javascript"></script>
 <!-- iCheck -->
 <script src="{{asset("packages/studiz/theme/admin-lte/js/plugins/iCheck/icheck.min.js")}}" type="text/javascript"></script>
 <!-- jquery.rest -->

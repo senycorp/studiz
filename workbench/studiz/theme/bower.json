@@ -27,6 +27,7 @@
     "raphael": "~2.1.2",
     "ionicons": "~2.0.1",
     "font-awesome": "~4.2.0",
-    "jQuery.serializeObject": "~2.0.3"
+    "jQuery.serializeObject": "~2.0.3",
+    "bootstrap-colorpickersliders": "~3.0.1"
   }
 }

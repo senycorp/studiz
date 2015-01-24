@@ -6,7 +6,8 @@ use Studiz\Core\Controller\LoginRequired;
 use Studiz\Core\Controller\Response;
 use Studiz\Subject\Model\Subject;
 
-class IndexController extends  GenericResourceController implements LoginRequired {
+class IndexController extends GenericResourceController implements LoginRequired
+{
     /**
      * Get base view package string
      *
@@ -46,9 +47,12 @@ class IndexController extends  GenericResourceController implements LoginRequire
      */
     protected function getModelData(array $data)
     {
-        $data['user_id'] = \Sentry::getUser()->id;
-
-        return $data;
+        return array(
+            'user_id'     => \Sentry::getUser()->id,
+            'title'       => \Input::get('title'),
+            'color'       => \Input::get('color'),
+            'description' => \Input::get('description'),
+        );
     }
 
     protected function getPageHeader()

@@ -2,15 +2,14 @@
  * Created by senycorp on 19.01.15.
  */
 
-$(document).ready(function() {
+$(document).ready(function () {
     window.$studiz = {
         client: null,
         __options__: {
             url: ''
         },
 
-        makeURL: function (append)
-        {
+        makeURL: function (append) {
             return this.__options__.url + '/' + append;
         },
 
@@ -20,7 +19,7 @@ $(document).ready(function() {
 
         init: function (options) {
             // Merge options
-            this.__options__ = $.extend( {}, this.__options__, options );
+            this.__options__ = $.extend({}, this.__options__, options);
 
             // Create restfull client
             this.client = new $.RestClient(this.__options__.url + '/');
@@ -29,7 +28,7 @@ $(document).ready(function() {
             this.popStateNavigation();
         },
 
-        popStateNavigation: function() {
+        popStateNavigation: function () {
             /**
              * This code is written by Ross Penman
              *
@@ -65,7 +64,7 @@ $(document).ready(function() {
 
             // Set page content
                 loadPage = function (href) {
-                    $main.load(href + " aside.right-side>*", function() {
+                    $main.load(href + " aside.right-side>*", function () {
                         fix_header();
                     });
                 };
@@ -87,15 +86,13 @@ $(document).ready(function() {
                     method = $(this).attr("data-method");
 
                 // Check for fully qualified links
-                if (href.indexOf($studiz.__options__.url) != 0)
-                {
+                if (href.indexOf($studiz.__options__.url) != 0) {
                     // Prepend baseURL
                     href = $studiz.__options__.url + '/' + href;
                 }
 
                 // Prevent loading #-hashURLs
-                if (href.indexOf('#') > 0)
-                {
+                if (href.indexOf('#') > 0) {
                     return false;
                 }
 
@@ -104,27 +101,27 @@ $(document).ready(function() {
                     || href.indexOf(':') === -1) {
 
                     // Method is empty. Perform a common get request
-                    if (!method)
-                    {
+                    if (!method) {
                         // Push it to history
                         history.pushState({
                             method: method
                         }, '', href);
 
                         // Load content from url
-                        $main.load(href + " aside.right-side>*", function(response, status, xhr) {
-                            if (xhr.status == 401)
-                            {
-                                window.location.reload();
+                        $.get(
+                            href, function (text) {
+                                $main.html($('aside.right-side', text).html());
+
+                                fix_header();
                             }
-                            fix_header();
-                        });
+                        ).fail(function (xhr) {
+                                window.location.reload();
+                            });
                     }
-                    else if (method == 'DELETE')
-                    {
+                    else if (method == 'DELETE') {
                         // Get URL and baseNode
                         var url = $.url(href);
-                        var baseNode = url.segment()[url.segment().length-2];
+                        var baseNode = url.segment()[url.segment().length - 2];
 
                         // Replace state instead of adding
                         history.replaceState({
@@ -137,21 +134,19 @@ $(document).ready(function() {
                         }
 
                         // Perform DELETE request and put response into content
-                        $studiz.client[baseNode].destroy(url.segment()[url.segment().length-1]).fail(function(jqXHR, textStatus) {
+                        $studiz.client[baseNode].destroy(url.segment()[url.segment().length - 1]).fail(function (jqXHR, textStatus) {
                             $main.html($('aside.right-side', jqXHR.responseText).html());
                             fix_header();
                         });
                     }
-                    else if (method == 'POST')
-                    {
+                    else if (method == 'POST') {
                         // Get closest form
                         var form = a.closest('form');
 
-                        if (form)
-                        {
+                        if (form) {
                             // Get URL and baseNode
                             var url = $.url(href);
-                            var baseNode = url.segment()[url.segment().length-1];
+                            var baseNode = url.segment()[url.segment().length - 1];
 
                             // Serialize form
                             var serializedForm = form.serializeObject();
@@ -172,22 +167,20 @@ $(document).ready(function() {
                             }, '', href);
 
                             // Perform POST request and put response into content
-                            $.post( href, serializedForm, function( jqXHR ) {
+                            $.post(href, serializedForm, function (jqXHR) {
                                 $main.html($('aside.right-side', jqXHR).html());
                                 fix_header();
                             });
                         }
                     }
-                    else if (method == 'PUT')
-                    {
+                    else if (method == 'PUT') {
                         // Get closest form
                         var form = a.closest('form');
 
-                        if (form)
-                        {
+                        if (form) {
                             // Get URL and baseNode
                             var url = $.url(href);
-                            var baseNode = url.segment()[url.segment().length-2];
+                            var baseNode = url.segment()[url.segment().length - 2];
 
                             // Serialize form
                             var serializedForm = form.serializeObject();
@@ -208,14 +201,14 @@ $(document).ready(function() {
                             }, '', href);
 
                             // Perform POST request and put response into content
-                            $studiz.client[baseNode].update(url.segment()[url.segment().length-1], serializedForm).fail(function(jqXHR, textStatus) {
+                            $studiz.client[baseNode].update(url.segment()[url.segment().length - 1], serializedForm).fail(function (jqXHR, textStatus) {
                                 $main.html($('aside.right-side', jqXHR.responseText).html());
                                 fix_header();
                             });
                             /*$.put( href, serializedForm, function( jqXHR ) {
-                                $main.html($('aside.right-side', jqXHR).html());
-                                fix_header();
-                            });*/
+                             $main.html($('aside.right-side', jqXHR).html());
+                             fix_header();
+                             });*/
                         }
                     }
 
