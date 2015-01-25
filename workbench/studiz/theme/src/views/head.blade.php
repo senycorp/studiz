@@ -21,6 +21,8 @@ Use this file to register your js,css and other dependencies
 <link href="{{asset("packages/studiz/theme/admin-lte/css/morris/morris.css")}}" rel="stylesheet" type="text/css" />
 <!-- jvectormap -->
 <link href="{{asset("packages/studiz/theme/admin-lte/css/jvectormap/jquery-jvectormap-1.2.2.css")}}" rel="stylesheet" type="text/css" />
+<!-- chosen -->
+<link href="{{asset("packages/studiz/theme/chosen-build/chosen.css")}}" rel="stylesheet" type="text/css" />
 <!-- Date Picker -->
 <link href="{{asset("packages/studiz/theme/admin-lte/css/datepicker/datepicker3.css")}}" rel="stylesheet" type="text/css" />
 <!-- Daterange picker -->
@@ -57,6 +59,8 @@ Use this file to register your js,css and other dependencies
 <script src="{{asset("packages/studiz/theme/admin-lte/js/plugins/daterangepicker/daterangepicker.js")}}" type="text/javascript"></script>
 <!-- datepicker -->
 <script src="{{asset("packages/studiz/theme/admin-lte/js/plugins/datepicker/bootstrap-datepicker.js")}}" type="text/javascript"></script>
+<!-- chosen -->
+<script src="{{asset("packages/studiz/theme/chosen-build/chosen.jquery.js")}}" type="text/javascript"></script>
 <!-- Bootstrap WYSIHTML5 -->
 <script src="{{asset("packages/studiz/theme/admin-lte/js/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js")}}" type="text/javascript"></script>
 <!-- Colorpicker -->

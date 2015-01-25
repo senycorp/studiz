@@ -11,3 +11,4 @@
 |
 */
 
+Route::resource('semester', '\Studiz\Semester\Controller\IndexController');

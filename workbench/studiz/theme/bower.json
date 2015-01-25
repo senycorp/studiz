@@ -28,6 +28,7 @@
     "ionicons": "~2.0.1",
     "font-awesome": "~4.2.0",
     "jQuery.serializeObject": "~2.0.3",
-    "bootstrap-colorpickersliders": "~3.0.1"
+    "bootstrap-colorpickersliders": "~3.0.1",
+    "chosen-build": "~1.1.0"
   }
 }

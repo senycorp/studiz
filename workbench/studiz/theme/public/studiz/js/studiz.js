@@ -74,7 +74,16 @@ $(document).ready(function () {
             // Register popstate event
             $(window).on("popstate", function (e) {
                 if (e.originalEvent.state !== null) {
-                    loadPage(location.href);
+                    // Load content from url
+                    $.get(
+                        location.href, function (text) {
+                            $main.html($('aside.right-side', text).html());
+
+                            fix_header();
+                        }
+                    ).fail(function (xhr) {
+                            window.location.reload();
+                        });
                 }
             });
 

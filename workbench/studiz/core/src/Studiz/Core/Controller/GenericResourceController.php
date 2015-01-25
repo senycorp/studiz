@@ -1,6 +1,7 @@
 <?php namespace Studiz\Core\Controller;
 
 use Illuminate\Support\Facades\Redirect;
+use Studiz\Core\ORM\GenericORM;
 
 /**
  * Class GenericResourceController
@@ -61,8 +62,12 @@ abstract class GenericResourceController extends GenericController
         // Set attributes of model
         $model->setRawAttributes($this->getModelData(\Input::all()));
 
+        $this->beforeStore($model);
+
         // Save it!
         $model->save();
+
+        $this->afterStore($model);
 
         // Show the resource
         return $this->show($model->id);
@@ -128,12 +133,61 @@ abstract class GenericResourceController extends GenericController
         // Set data
         $model->setRawAttributes($data);
 
+        $this->beforeUpdate($model);
+
         // Save model
         $model->save();
+
+        $this->afterUpdate($this->getModel()->find($id));
 
         return $this->show($id);
     }
 
+    /**
+     * Callback before update
+     *
+     * @param \Studiz\Core\ORM\GenericORM $model
+     *
+     * @return bool
+     */
+    protected function beforeUpdate(GenericORM $model)
+    {
+        return true;
+    }
+
+    /**
+     * Callback before store
+     *
+     * @param \Studiz\Core\ORM\GenericORM $model
+     *
+     * @return bool
+     */
+    protected function beforeStore(GenericORM $model)
+    {
+        return true;
+    }
+
+    /**
+     * Callback for afterUpdate
+     *
+     * @param \Studiz\Core\ORM\GenericORM $model
+     *
+     * @return mixed
+     */
+    protected function afterUpdate(GenericORM $model) {
+        return true;
+    }
+
+    /**
+     * Callback for afterStore
+     *
+     * @param \Studiz\Core\ORM\GenericORM $model
+     *
+     * @return mixed
+     */
+    protected function afterStore(GenericORM $model) {
+        return true;
+    }
 
     /**
      * Remove the specified resource from storage.

@@ -39,7 +39,7 @@ class CreateCoreSchema extends Migration
             $table->timestamps();
         });
 
-        Schema::create('semester_subjects', function ($table)
+        Schema::create('semester_subject', function ($table)
         {
             $table->increments('id');
 
@@ -56,10 +56,10 @@ class CreateCoreSchema extends Migration
         {
             $table->increments('id');
 
-            $table->integer('semester_subjects_id')->unsigned();
-            $table->foreign('semester_subjects_id')
+            $table->integer('semester_subject_id')->unsigned();
+            $table->foreign('semester_subject_id')
                 ->references('id')
-                ->on('semester_subjects')->onUpdate('cascade')->onDelete('cascade');
+                ->on('semester_subject')->onUpdate('cascade')->onDelete('cascade');
 
             $table->dateTime('start_at');
             $table->dateTime('end_at');
@@ -82,7 +82,7 @@ class CreateCoreSchema extends Migration
         DB::statement('SET FOREIGN_KEY_CHECKS = 0');
 
         Schema::dropIfExists('timetables');
-        Schema::dropIfExists('semester_subjects');
+        Schema::dropIfExists('semester_subject');
         Schema::dropIfExists('subjects');
         Schema::dropIfExists('semesters');
 
